@@ -21,13 +21,14 @@ public class Auto extends Robot {
     @Override
     public void start() {
         runtime.reset();
-        //if PID works just use:
-        PID(20,1);//does pid to move 20 inches during 1 second
+        
         double time=1;
         double t = System.currentTimeMillis();
         double end = t+time;
         while(System.currentTimeMillis() < end) {
             drive(-1,0);
+            //if PID works just use:
+        PID(.7);//does pid to move 20 inches during 1 second
         }
         }
 
