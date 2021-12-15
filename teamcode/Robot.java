@@ -78,19 +78,15 @@ public class Robot extends OpMode {
 
 
 
-    public void PID(double targetDistance,double time)    {
-        double t = System.currentTimeMillis();
-        double end = t+time;
-        double InPerTick = .01;//needs to be figured
-        double targetvelocity = targetDistance/InPerTick/time;
-        while(System.currentTimeMillis() < end) {
+    public void PID(double targetvelocity)    {
+       
 
 
             PIDTime.reset();
 
             double currentVelocity = leftMotor.getPower();
 
-            double error = targetDistance - InPerTick * currentVelocity;
+            double error = targetvelocity- currentVelocity;
             integral = integral + error * PIDTime.time();
             double ChangeError = error - LastError;
             double derivative = ChangeError / PIDTime.time();
